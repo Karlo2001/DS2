@@ -1,0 +1,156 @@
+---
+swagger: "2.0"
+info:
+  description: "REST API exposing data about courses at ITU"
+  version: "1.0.0"
+  title: "Course API"
+  contact:
+    name: "IT-University of Copenhagen"
+    url: "https://itu.dk/"
+host: "api.itucourses.com"
+basePath: "/v1"
+schemes:
+- "https"
+consumes:
+- "application/json"
+- "application/xml"
+produces:
+- "application/json"
+- "application/xml"
+paths:
+  /students/{studentid}:
+    get:
+      summary: "Returns a student by ID."
+      parameters:
+      - name: "studentid"
+        in: "path"
+        description: "Unique ID representing a student at ITU."
+        required: true
+        type: "integer"
+        minimum: 1
+        x-exportParamName: "Studentid"
+      responses:
+        "200":
+          description: "A student object"
+          schema:
+            $ref: "#/definitions/Student"
+        "400":
+          description: "The specified student ID is invalid (e.g. not a number)."
+        "404":
+          description: "A student with the specified ID was not found."
+        default:
+          description: "Unexpected error"
+  /courses/{courseid}:
+    get:
+      summary: "Returns a course by ID."
+      parameters:
+      - name: "courseid"
+        in: "path"
+        description: "Unique ID representing a course at ITU."
+        required: true
+        type: "integer"
+        minimum: 1
+        x-exportParamName: "Courseid"
+      responses:
+        "200":
+          description: "A course object"
+          schema:
+            $ref: "#/definitions/Course"
+        "400":
+          description: "The specified course ID is invalid (e.g. not a number)."
+        "404":
+          description: "A course with the specified ID was not found."
+        default:
+          description: "Unexpected error"
+  /teachers/{teacherid}:
+    get:
+      summary: "Returns a teacher by ID."
+      parameters:
+      - name: "teacherid"
+        in: "path"
+        description: "Unique ID representing a teacher at ITU."
+        required: true
+        type: "integer"
+        minimum: 1
+        x-exportParamName: "Teacherid"
+      responses:
+        "200":
+          description: "A teacher object"
+          schema:
+            $ref: "#/definitions/Teacher"
+        "400":
+          description: "The specified teacher ID is invalid (e.g. not a number)."
+        "404":
+          description: "A teacher with the specified ID was not found."
+        default:
+          description: "Unexpected error"
+definitions:
+  Student:
+    required:
+    - "course_workload"
+    - "enrollments"
+    - "id"
+    - "name"
+    properties:
+      id:
+        type: "integer"
+        example: 8921392
+      name:
+        type: "string"
+        example: "Kim Richards"
+      course_workload:
+        type: "number"
+        example: 75.099999999999994315658113919198513031005859375
+      enrollments:
+        type: "array"
+        items:
+          $ref: "#/definitions/Course"
+    example:
+      course_workload: 75.099999999999994315658113919198513031005859375
+      name: "Kim Richards"
+      id: 8921392
+      enrollments:
+      - name: "Functional Programming"
+        satisfaction_rating: 70.099999999999994315658113919198513031005859375
+        id: 4
+      - name: "Functional Programming"
+        satisfaction_rating: 70.099999999999994315658113919198513031005859375
+        id: 4
+  Course:
+    required:
+    - "id"
+    - "name"
+    - "satisfaction_rating"
+    properties:
+      id:
+        type: "integer"
+        example: 4
+      name:
+        type: "string"
+        example: "Functional Programming"
+      satisfaction_rating:
+        type: "number"
+        example: 70.099999999999994315658113919198513031005859375
+    example:
+      name: "Functional Programming"
+      satisfaction_rating: 70.099999999999994315658113919198513031005859375
+      id: 4
+  Teacher:
+    required:
+    - "id"
+    - "name"
+    - "popularity_score"
+    properties:
+      id:
+        type: "integer"
+        example: 91823
+      name:
+        type: "string"
+        example: "Lisa Rinna"
+      popularity_score:
+        type: "number"
+        example: 91.2000000000000028421709430404007434844970703125
+    example:
+      name: "Lisa Rinna"
+      id: 91823
+      popularity_score: 91.2000000000000028421709430404007434844970703125
