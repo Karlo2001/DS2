@@ -12,7 +12,7 @@ type course struct {
 	Satisfaction_Rating float32 `json:"satisfaction_rating"`
 }
 
-func initServer() {
+func main() {
 	router := gin.Default()
 	router.GET("/courses", getCourses)
 	router.GET("/courses/:id", GetCourseById)

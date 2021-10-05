@@ -6,7 +6,6 @@ var action1 int
 var courseID string
 
 func main() {
-	initServer()
 	for {
 		fmt.Println("Type 1 to GET all courses")
 		fmt.Println("Type 2 to GET course by ID")
