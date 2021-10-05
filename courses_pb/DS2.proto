@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+package course;
+
+// Random path. Nothing is imported from here, it just needed one
+option go_package = "protocolbuffers/course";
+
+// To create .pb.go files
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative course_grpc_buffers/DS2.proto
+
+service Courses {
+    rpc Get(CourseRequest) returns (Course) {}
+}
+
+message CourseRequest {
+    int32 id = 1;
+}
+
+message Course {
+    int32 id = 1;
+    string name = 2;
+    float satisfaction_rating = 3;
+}
