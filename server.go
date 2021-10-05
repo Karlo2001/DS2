@@ -22,6 +22,12 @@ func initServer() {
 var courses = []course{
 	{ID: "1", Name: "Distributed Systems", Satisfaction_Rating: 60.3},
 	{ID: "2", Name: "First Year Project", Satisfaction_Rating: 80.9},
+	{ID: "3", Name: "BPAK", Satisfaction_Rating: 60.3},
+	{ID: "4", Name: "Introductory Programming", Satisfaction_Rating: 80.9},
+	{ID: "5", Name: "UI Design", Satisfaction_Rating: 60.3},
+	{ID: "6", Name: "Database architecture", Satisfaction_Rating: 80.9},
+	{ID: "7", Name: "Software Architecture", Satisfaction_Rating: 60.3},
+	{ID: "8", Name: "Functional Programming", Satisfaction_Rating: 80.9},
 }
 
 func GetCourseById(c *gin.Context) {
