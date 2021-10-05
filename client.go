@@ -12,8 +12,8 @@ func clientGetCourses() {
 		fmt.Println("No response from request")
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body) // response body is []byte
-	fmt.Println(string(body))              // convert to string before print
+	body, _ := ioutil.ReadAll(resp.Body) // response body is []byte
+	fmt.Println(string(body))            // convert to string before print
 }
 
 func clinetGetCourseById(id string) {
@@ -22,6 +22,6 @@ func clinetGetCourseById(id string) {
 		fmt.Println("No response from request")
 	}
 	defer resp.Body.Close()
-	body, err := ioutil.ReadAll(resp.Body) // response body is []byte
-	fmt.Println(string(body))              // convert to string before print
+	body, _ := ioutil.ReadAll(resp.Body) // response body is []byte
+	fmt.Println(string(body))            // convert to string before print
 }
