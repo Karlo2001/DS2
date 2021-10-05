@@ -13,7 +13,7 @@ func main() {
 		if action1 == 1 {
 			clientGetCourses()
 		} else if action1 == 2 {
-			fmt.Println("Type the ID of the course you would like to GET (1-2)")
+			fmt.Println("Type the ID of the course you would like to GET (1-8)")
 			fmt.Scanln(&courseID)
 			clinetGetCourseById(courseID)
 		} else {
